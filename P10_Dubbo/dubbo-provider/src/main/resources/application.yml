@@ -1,0 +1,23 @@
+### 设定启动端口号
+server:
+  port: 22222
+### 设定项目应用名
+spring:
+  application:
+    name: dubbo-provider
+### 配置 Dubbo 信息
+dubbo:
+  ### Dubbo 应用名
+  application:
+    name: dubbo-provider
+  ### 配置 Dubbo 所使用的传输协议
+  protocol:
+    name: dubbo
+    ### 协议使用端口
+    port: 12345
+  ### 设定注册中心地址
+  registry:
+    address: zookeeper://localhost:2181
+  ### 设定 Dubbo 扫描注解路径
+  scan:
+    base-packages: cn.ekgc.dubbo
