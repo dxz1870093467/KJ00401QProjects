@@ -1,10 +1,12 @@
 package cn.ekgc.user.transport;
 
 import cn.ekgc.user.pojo.entity.User;
+import cn.ekgc.user.pojo.vo.Page;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <b>用户功能传输层接口</b>
@@ -17,6 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface UserTransport {
 
 	/**
+	 * <b>查询分页信息</b>
+	 * @param page
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/page")
+	Page<User> getPage(Page<User> page) throws Exception;
+
+	/**
 	 * <b>添加用户信息</b>
 	 * @param user
 	 * @return
@@ -24,4 +35,22 @@ public interface UserTransport {
 	 */
 	@PostMapping("/save")
 	boolean save(@RequestBody User user) throws Exception;
+
+	/**
+	 * <b>根据主键查询用户信息</b>
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/id")
+	User getById(@RequestParam Long id) throws Exception;
+
+	/**
+	 * <b>修改用户信息</b>
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/update")
+	boolean update(@RequestBody User user) throws Exception;
 }
